@@ -20,7 +20,7 @@ $testsRoot = "$solutionRoot\test"
 $globalFilePath = "$solutionRoot\global.json"
 $appProjects = Get-ChildItem "$srcRoot\**\$projectFileName" | foreach { $_.FullName }
 $testProjects = Get-ChildItem "$testsRoot\**\$projectFileName" | foreach { $_.FullName }
-$packableProjectDirectories = @("$srcRoot\App.Metrics.Extensions.Owin", "$srcRoot\App.Metrics.Extensions.Mvc", "$srcRoot\App.Metrics.Extensions.WebApi")
+$packableProjectDirectories = @("$srcRoot\App.Metrics.Extensions.Owin", "$srcRoot\App.Metrics.Extensions.Owin.Mvc", "$srcRoot\App.Metrics.Extensions.Owin.WebApi")
 
 task default -depends PatchProject, TestParams, Setup, Build, Pack
 
