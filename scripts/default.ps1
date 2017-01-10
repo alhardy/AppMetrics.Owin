@@ -56,6 +56,7 @@ task Setup {
 
 task Build -depends Restore, Clean {
 	
+	$success = $true
 	$appProjects | foreach {
 		dotnet build "$_" --configuration $configuration
     }
@@ -129,7 +130,7 @@ task Pack -depends Restore, Clean {
 task Restore {
 	@($srcRoot, $testsRoot) | foreach {
         Write-Output "Restoring for '$_'"
-        dotnet restore "$_"
+        dotnet restore "$_" -f https://www.myget.org/F/alhardy/api/v3/index.json
     }
 }
 

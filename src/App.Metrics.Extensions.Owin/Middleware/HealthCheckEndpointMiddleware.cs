@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using App.Metrics.Core;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
+using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Internal;
 using App.Metrics.Serialization.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -57,7 +58,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
                 if (healthStatus.Status.IsDegraded())
                 {
                     responseStatusCode = HttpStatusCode.OK;
-                    warning = Constants.Health.DegradedStatusDisplay;
+                    warning = "Degraded";
                 }
 
                 var json = _serializer.Serialize(healthStatus);

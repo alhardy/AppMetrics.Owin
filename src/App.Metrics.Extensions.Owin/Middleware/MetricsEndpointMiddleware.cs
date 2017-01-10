@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
+using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Serialization.Interfaces;
 using Microsoft.Extensions.Logging;
 

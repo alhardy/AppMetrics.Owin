@@ -13,5 +13,13 @@ namespace App.Metrics.Extensions.Owin.Internal
             public const string MetricsTextEndpoint = "/metrics-text";
             public const string PingEndpoint = "/ping";
         }
+
+        public static class ReservoirSampling
+        {
+            public const int DefaultSampleSize = 1028;
+            public const double DefaultExponentialDecayFactor = 0.015;
+            public const double DefaultApdexTSeconds = 0.5;
+            public const int ApdexRequiredSamplesBeforeCalculating = 100;
+        }
     }
 }

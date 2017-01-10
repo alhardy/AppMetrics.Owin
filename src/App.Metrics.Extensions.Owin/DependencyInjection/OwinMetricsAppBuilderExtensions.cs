@@ -41,10 +41,6 @@ namespace App.Metrics
                 throw new ArgumentNullException(nameof(app));
             }
 
-            // Verify if AddMetrics was done before calling UseMetrics
-            // We use the MetricsMarkerService to make sure if all the services were added.
-            MetricsServicesHelper.ThrowIfMetricsNotRegistered(provider);
-
             var appMetricsOptions = provider.GetRequiredService<AppMetricsOptions>();
             var owinMetricsOptions = provider.GetRequiredService<OwinMetricsOptions>();
             var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
@@ -55,8 +51,6 @@ namespace App.Metrics
             if (owinMetricsOptions.HealthEndpointEnabled)
             {
                 var healthSerializer = provider.GetRequiredService<IHealthStatusSerializer>();
-
-                HealthServicesHelper.ThrowIfMetricsNotRegistered(provider);
 
                 app.Use(new HealthCheckEndpointMiddleware(owinMetricsOptions, loggerFactory, metrics, healthSerializer));
             }

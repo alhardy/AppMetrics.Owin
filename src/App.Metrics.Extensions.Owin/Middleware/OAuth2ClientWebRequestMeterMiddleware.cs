@@ -8,6 +8,7 @@ using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
+using App.Metrics.Extensions.Owin.Extensions;
 
 namespace App.Metrics.Extensions.Owin.Middleware
 {

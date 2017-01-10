@@ -2,8 +2,8 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
 using System.Collections.Generic;
+using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Extensions.Owin.Internal;
 
 namespace App.Metrics.Extensions.Owin.DependencyInjection.Options
@@ -18,8 +18,12 @@ namespace App.Metrics.Extensions.Owin.DependencyInjection.Options
             PingEndpointEnabled = true;
             OAuth2TrackingEnabled = true;
             ApdexTrackingEnabled = true;
-            ApdexTSeconds = Metrics.Internal.Constants.ReservoirSampling.DefaultApdexTSeconds;
+            ApdexTSeconds = Constants.ReservoirSampling.DefaultApdexTSeconds;
         }
+
+        public bool ApdexTrackingEnabled { get; set; }
+
+        public double ApdexTSeconds { get; set; }
 
         public string HealthEndpoint { get; set; } = Constants.DefaultRoutePaths.HealthEndpoint.EnsureLeadingSlash();
 
@@ -36,10 +40,6 @@ namespace App.Metrics.Extensions.Owin.DependencyInjection.Options
         public bool MetricsTextEndpointEnabled { get; set; }
 
         public bool OAuth2TrackingEnabled { get; set; }
-
-        public bool ApdexTrackingEnabled { get; set; }
-
-        public double ApdexTSeconds { get; set; }
 
         public string PingEndpoint { get; set; } = Constants.DefaultRoutePaths.PingEndpoint.EnsureLeadingSlash();
 

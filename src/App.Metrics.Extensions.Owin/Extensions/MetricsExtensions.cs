@@ -4,6 +4,7 @@
 
 using System;
 using App.Metrics.Core;
+using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Extensions.Owin.Internal;
 
 // ReSharper disable CheckNamespace

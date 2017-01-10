@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
+using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Reporting;
 using App.Metrics.Reporting.Internal;
 using Microsoft.Extensions.Logging;
@@ -28,7 +29,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
         {
             var requestPath = environment["owin.RequestPath"] as string;
 
-            if (Options.MetricsTextEndpointEnabled && string.IsNullOrWhiteSpace(Options.MetricsTextEndpoint) &&
+            if (Options.MetricsTextEndpointEnabled && Options.MetricsTextEndpoint.IsPresent() &&
                 Options.MetricsTextEndpoint == requestPath)
             {
                 Logger.MiddlewareExecuting(GetType());
