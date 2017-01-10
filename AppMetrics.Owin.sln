@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A98FF218-BAE3-4E19-9EFC-300A21D5598D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\AppMetrics.Owin\appveyor.yml = ..\..\AppMetrics.Owin\appveyor.yml
+		..\..\AppMetrics.Owin\GitReleaseManager.yaml = ..\..\AppMetrics.Owin\GitReleaseManager.yaml
+		..\..\AppMetrics.Owin\global.json = ..\..\AppMetrics.Owin\global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "App.Metrics.Extensions.Owin", "src\App.Metrics.Extensions.Owin\App.Metrics.Extensions.Owin.xproj", "{583624C5-977D-4DA5-AE99-B17420D4FDD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{583624C5-977D-4DA5-AE99-B17420D4FDD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583624C5-977D-4DA5-AE99-B17420D4FDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583624C5-977D-4DA5-AE99-B17420D4FDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583624C5-977D-4DA5-AE99-B17420D4FDD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
