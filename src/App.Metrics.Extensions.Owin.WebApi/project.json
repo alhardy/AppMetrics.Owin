@@ -1,5 +1,5 @@
 {
-  "authors": ["Allan Hardy"],
+  "authors": [ "Allan Hardy" ],
   "buildOptions": {
     "warningsAsErrors": true,
     "nowarn": [
@@ -10,15 +10,19 @@
   },
   "dependencies": {
     "App.Metrics": "1.0.0-beta4-build00154",
+    "App.Metrics.Extensions.Owin": "1.0.0-beta4",
+    "Microsoft.AspNet.WebApi.Core": "5.2.3",
+    "Microsoft.AspNet.WebApi.Owin": "5.2.3",
     "Microsoft.Extensions.DependencyInjection": "1.1.0",
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
+    "Microsoft.Owin.Host.SystemWeb": "3.0.1",
     "NETStandard.Library": "1.6.1",
-    "Owin": "1.0.0"
+    "Owin": "1.0.0",
+    "System.Reflection": "4.0.0.0"
   },
-  "description":
-    "Extends the App.Metrics library providing a set OWIN Middleware Components which will record things like error rates per endpoint and an overall rate, request rates per endpoint and an overall rate etc.",
+  "description": "Extends the App.Metrics library providing a set OWIN Middleware Components and Web Api extensions which will record things like error rates per endpoint and an overall rate, request rates per endpoint and an overall rate etc.",
   "frameworks": {
     "net452": {
       "buildOptions": {
@@ -27,16 +31,17 @@
         ]
       },
       "dependencies": {
-      
+
       },
       "frameworkAssemblies": {
-        "System.Reflection": "4.0.0.0"
+        "System.Web.Routing": "4.0.0.0"
       }
     }
   },
   "packOptions": {
     "releaseNotes": "Initial Release",
     "tags": [
+      "web api",
       "measurements",
       "charts",
       "timer",
