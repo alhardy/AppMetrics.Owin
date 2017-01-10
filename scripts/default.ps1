@@ -22,7 +22,7 @@ $appProjects = Get-ChildItem "$srcRoot\**\$projectFileName" | foreach { $_.FullN
 $testProjects = Get-ChildItem "$testsRoot\**\$projectFileName" | foreach { $_.FullName }
 $packableProjectDirectories = @("$srcRoot\App.Metrics.Extensions.Owin")
 
-task default -depends PatchProject, TestParams, Setup, Build, RunTests, Pack
+task default -depends PatchProject, TestParams, Setup, Build, Pack
 
 task TestParams { 
 	Assert ($configuration -ne $null) '$configuration should not be null'
