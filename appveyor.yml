@@ -12,4 +12,3 @@ deploy:
   api_key:
     secure: gIAiACgNj+JzXyLLTe3rLxZyrAB9RpC8Lw81xEjdOLXqotprqEwGiFWRipEqkpps
   skip_symbols: true
-  symbol_server: https://www.myget.org/F/alhardy/symbol
