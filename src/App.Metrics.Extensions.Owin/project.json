@@ -9,7 +9,7 @@
     "debugType": "full"
   },
   "dependencies": {
-    "App.Metrics": "1.0.0-beta4-build00150",
+    "App.Metrics": "1.0.0-beta4-build00152",
     "Microsoft.Extensions.DependencyInjection": "1.1.0",
     "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
     "Microsoft.Extensions.Logging": "1.1.0",
