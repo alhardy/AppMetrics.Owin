@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A98FF218-BAE3-4E19-9EFC-300A21D5598D}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\AppMetrics.Owin\appveyor.yml = ..\..\AppMetrics.Owin\appveyor.yml
-		..\..\AppMetrics.Owin\GitReleaseManager.yaml = ..\..\AppMetrics.Owin\GitReleaseManager.yaml
 		..\..\AppMetrics.Owin\global.json = ..\..\AppMetrics.Owin\global.json
 	EndProjectSection
 EndProject
