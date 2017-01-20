@@ -32,7 +32,7 @@ namespace App.Metrics
                 return Task.FromResult(HealthCheckResult.Ignore());
             }
 
-            var metricsContext = _metrics.Value.Advanced.Data.ReadContext(OwinMetricsRegistry.Contexts.HttpRequests.ContextName);
+            var metricsContext = _metrics.Value.Snapshot.GetForContext(OwinMetricsRegistry.Contexts.HttpRequests.ContextName);
 
             var apdex = metricsContext.ApdexValueFor(OwinMetricsRegistry.Contexts.HttpRequests.ApdexScores.ApdexMetricName);
 

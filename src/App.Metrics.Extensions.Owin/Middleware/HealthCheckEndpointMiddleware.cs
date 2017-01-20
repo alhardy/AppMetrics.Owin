@@ -45,7 +45,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
 
                 //TODO: AH - confirm cancellation token is correct
                 var cancellationToken = (CancellationToken)environment["owin.CallCancelled"];
-                var healthStatus = await Metrics.Advanced.Health.ReadStatusAsync(cancellationToken);
+                var healthStatus = await Metrics.Health.ReadStatusAsync(cancellationToken);
                 string warning = null;
 
                 var responseStatusCode = HttpStatusCode.OK;

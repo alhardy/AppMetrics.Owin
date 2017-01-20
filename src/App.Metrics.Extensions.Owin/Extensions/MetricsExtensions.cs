@@ -16,17 +16,17 @@ namespace App.Metrics
     {
         public static IMetrics DecrementActiveRequests(this IMetrics metrics)
         {
-            metrics.Decrement(OwinMetricsRegistry.Contexts.HttpRequests.Counters.ActiveRequests);
+            metrics.Measure.Counter.Decrement(OwinMetricsRegistry.Contexts.HttpRequests.Counters.ActiveRequests);
 
             return metrics;
         }
 
         public static IMetrics ErrorRequestPercentage(this IMetrics metrics)
         {
-            var errors = metrics.Advanced.Meter(OwinMetricsRegistry.Contexts.HttpRequests.Meters.HttpErrorRequests);
-            var requests = metrics.Advanced.Timer(OwinMetricsRegistry.Contexts.HttpRequests.Timers.WebRequestTimer);
+            var errors = metrics.Provider.Meter.Instance(OwinMetricsRegistry.Contexts.HttpRequests.Meters.HttpErrorRequests);
+            var requests = metrics.Provider.Timer.Instance(OwinMetricsRegistry.Contexts.HttpRequests.Timers.WebRequestTimer);
 
-            metrics.Advanced.Gauge(OwinMetricsRegistry.Contexts.HttpRequests.Gauges.PercentageErrorRequests,
+            metrics.Measure.Gauge.SetValue(OwinMetricsRegistry.Contexts.HttpRequests.Gauges.PercentageErrorRequests,
                 () => new HitPercentageGauge(errors, requests, m => m.OneMinuteRate));
 
             return metrics;
@@ -34,14 +34,14 @@ namespace App.Metrics
 
         public static IMetrics IncrementActiveRequests(this IMetrics metrics)
         {
-            metrics.Increment(OwinMetricsRegistry.Contexts.HttpRequests.Counters.ActiveRequests);
+            metrics.Measure.Counter.Increment(OwinMetricsRegistry.Contexts.HttpRequests.Counters.ActiveRequests);
 
             return metrics;
         }
 
         public static IMetrics MarkHttpEndpointForOAuthClient(this IMetrics metrics, string routeTemplate, string clientId, int httpStatusCode)
         {
-            metrics.Mark(OwinMetricsRegistry.Contexts.OAuth2.Meters.EndpointHttpRequests(routeTemplate),
+            metrics.Measure.Meter.Mark(OwinMetricsRegistry.Contexts.OAuth2.Meters.EndpointHttpRequests(routeTemplate),
                 item => item.With("client_id", clientId).With("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
@@ -49,7 +49,7 @@ namespace App.Metrics
 
         public static IMetrics MarkHttpRequestEndpointError(this IMetrics metrics, string routeTemplate, int httpStatusCode)
         {
-            metrics.Mark(OwinMetricsRegistry.Contexts.HttpRequests.Meters.EndpointHttpErrorRequests(routeTemplate),
+            metrics.Measure.Meter.Mark(OwinMetricsRegistry.Contexts.HttpRequests.Meters.EndpointHttpErrorRequests(routeTemplate),
                 item => item.With("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
@@ -57,7 +57,7 @@ namespace App.Metrics
 
         public static IMetrics MarkHttpRequestError(this IMetrics metrics, int httpStatusCode)
         {
-            metrics.Mark(OwinMetricsRegistry.Contexts.HttpRequests.Meters.HttpErrorRequests,
+            metrics.Measure.Meter.Mark(OwinMetricsRegistry.Contexts.HttpRequests.Meters.HttpErrorRequests,
                 item => item.With("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
@@ -65,7 +65,7 @@ namespace App.Metrics
 
         public static IMetrics MarkHttpRequestForOAuthClient(this IMetrics metrics, string clientId, int httpStatusCode)
         {
-            metrics.Mark(OwinMetricsRegistry.Contexts.OAuth2.Meters.HttpRequests,
+            metrics.Measure.Meter.Mark(OwinMetricsRegistry.Contexts.OAuth2.Meters.HttpRequests,
                 item => item.With("client_id", clientId).With("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
@@ -73,8 +73,8 @@ namespace App.Metrics
 
         public static IMetrics RecordEndpointRequestTime(this IMetrics metrics, string clientId, string routeTemplate, long elapsed)
         {
-            metrics.Advanced
-                .Timer(OwinMetricsRegistry.Contexts.HttpRequests.Timers.EndpointPerRequestTimer(routeTemplate))
+            metrics.Provider.Timer
+                .Instance(OwinMetricsRegistry.Contexts.HttpRequests.Timers.EndpointPerRequestTimer(routeTemplate))
                 .Record(elapsed, TimeUnit.Nanoseconds, clientId.IsPresent() ? clientId : null);
 
             return metrics;
@@ -82,7 +82,7 @@ namespace App.Metrics
 
         public static IMetrics UpdatePostAndPutRequestSize(this IMetrics metrics, long value)
         {
-            metrics.Update(OwinMetricsRegistry.Contexts.HttpRequests.Histograms.PostAndPutRequestSize, value);
+            metrics.Measure.Histogram.Update(OwinMetricsRegistry.Contexts.HttpRequests.Histograms.PostAndPutRequestSize, value);
             return metrics;
         }
     }

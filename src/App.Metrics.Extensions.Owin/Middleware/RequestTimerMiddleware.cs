@@ -22,8 +22,8 @@ namespace App.Metrics.Extensions.Owin.Middleware
             IMetrics metrics)
             : base(owinOptions, loggerFactory, metrics)
         {
-            _requestTimer = Metrics.Advanced
-                .Timer(OwinMetricsRegistry.Contexts.HttpRequests.Timers.WebRequestTimer);
+            _requestTimer = Metrics.Provider.Timer
+                .Instance(OwinMetricsRegistry.Contexts.HttpRequests.Timers.WebRequestTimer);
         }
 
         public async Task Invoke(IDictionary<string, object> environment)

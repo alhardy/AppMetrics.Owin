@@ -30,7 +30,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
 
                 var httpResponseStatusCode = int.Parse(environment["owin.ResponseStatusCode"].ToString());
 
-                environment[TimerItemsKey] = Metrics.Advanced.Clock.Nanoseconds;
+                environment[TimerItemsKey] = Metrics.Clock.Nanoseconds;
 
                 await Next(environment);
 
@@ -39,7 +39,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
                     var clientId = environment.OAuthClientId();
 
                     var startTime = (long)environment[TimerItemsKey];
-                    var elapsed = Metrics.Advanced.Clock.Nanoseconds - startTime;
+                    var elapsed = Metrics.Clock.Nanoseconds - startTime;
 
                     Metrics.RecordEndpointRequestTime(clientId, environment.GetMetricsCurrentRouteName(), elapsed);
                 }

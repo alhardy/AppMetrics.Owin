@@ -41,7 +41,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
             {
                 Logger.MiddlewareExecuting(GetType());
 
-                var metricsData = Metrics.Advanced.Data.ReadData();
+                var metricsData = Metrics.Snapshot.Get();
 
                 var json = _serializer.Serialize(metricsData);
 
