@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Http
 {
     internal static class HttpContextExtensions
     {
-        private static readonly string MetricsCurrentRouteName = "__Mertics.CurrentRouteName__";
+        private static readonly string MetricsCurrentRouteName = "__App.Metrics.CurrentRouteName__";
 
         public static void AddMetricsCurrentRouteName(this IDictionary<string, object> environment, string metricName)
         {

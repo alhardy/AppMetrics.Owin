@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using App.Metrics.Configuration;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Reporting;
@@ -17,12 +18,14 @@ namespace App.Metrics.Extensions.Owin.Middleware
     {
         private readonly DefaultReportGenerator _reportGenerator;
 
-        public MetricsEndpointTextEndpointMiddleware(OwinMetricsOptions owinOptions,
+        public MetricsEndpointTextEndpointMiddleware(
+            AppMetricsOptions options,
+            OwinMetricsOptions owinOptions,
             ILoggerFactory loggerFactory,
             IMetrics metrics)
             : base(owinOptions, loggerFactory, metrics)
         {
-            _reportGenerator = new DefaultReportGenerator(loggerFactory);
+            _reportGenerator = new DefaultReportGenerator(options, loggerFactory);
         }
 
         public async Task Invoke(IDictionary<string, object> environment)

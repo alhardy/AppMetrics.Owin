@@ -7,13 +7,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Internal;
+using App.Metrics.Timer.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace App.Metrics.Extensions.Owin.Middleware
 {
     public class RequestTimerMiddleware : AppMetricsMiddleware<OwinMetricsOptions>
     {
-        private const string TimerItemsKey = "__App.Mertics.RequestTimer__";
+        private const string TimerItemsKey = "__App.Metrics.RequestTimer__";
         private readonly ITimer _requestTimer;
 
         public RequestTimerMiddleware(

@@ -1,13 +1,12 @@
-﻿// Copyright (c) Allan hardy. All rights reserved.
+﻿// Copyright (c) Allan Hardy. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using App.Metrics.Abstractions.Serialization;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Extensions;
-using App.Metrics.Serialization.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace App.Metrics.Extensions.Owin.Middleware

@@ -1,9 +1,10 @@
-﻿// // Copyright (c) Allan Hardy. All rights reserved.
-// // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+﻿// Copyright (c) Allan Hardy. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using App.Metrics.Apdex.Abstractions;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Internal;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
 {
     public class ApdexMiddleware : AppMetricsMiddleware<OwinMetricsOptions>
     {
-        private const string ApdexItemsKey = "__App.Mertics.Apdex__";
+        private const string ApdexItemsKey = "__App.Metrics.Apdex__";
         private readonly IApdex _apdexTracking;
 
         public ApdexMiddleware(

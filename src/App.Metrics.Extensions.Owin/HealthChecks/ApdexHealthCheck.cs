@@ -1,17 +1,17 @@
-// Copyright (c) Allan hardy. All rights reserved.
+// Copyright (c) Allan Hardy. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
 
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using App.Metrics.Core;
+using App.Metrics.Apdex;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Internal;
+using App.Metrics.Health;
 
 // ReSharper disable CheckNamespace
 namespace App.Metrics
-// ReSharper restore CheckNamespace
+    // ReSharper restore CheckNamespace
 {
     public class ApdexHealthCheck : HealthCheck
     {
@@ -32,9 +32,9 @@ namespace App.Metrics
                 return Task.FromResult(HealthCheckResult.Ignore());
             }
 
-            var metricsContext = _metrics.Value.Snapshot.GetForContext(OwinMetricsRegistry.Contexts.HttpRequests.ContextName);
-
-            var apdex = metricsContext.ApdexValueFor(OwinMetricsRegistry.Contexts.HttpRequests.ApdexScores.ApdexMetricName);
+            var apdex = _metrics.Value.Snapshot.GetApdexValue(
+                OwinMetricsRegistry.Contexts.HttpRequests.ContextName,
+                OwinMetricsRegistry.Contexts.HttpRequests.ApdexScores.ApdexMetricName);
 
             if (apdex.Score < 0.5)
             {

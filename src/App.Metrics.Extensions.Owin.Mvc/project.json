@@ -9,7 +9,7 @@
     "debugType": "full"
   },
   "dependencies": {
-    "App.Metrics": "1.0.0-beta5-build00225",
+    "App.Metrics": "1.0.0-beta5-build00244",
     "App.Metrics.Extensions.Owin": "1.0.0-alpha1",
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.Extensions.DependencyInjection": "1.1.0",

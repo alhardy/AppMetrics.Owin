@@ -1,23 +1,18 @@
-// Copyright (c) Allan hardy. All rights reserved.
+// Copyright (c) Allan Hardy. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
 using System;
-using App.Metrics;
+using App.Metrics.Abstractions.Serialization;
 using App.Metrics.Configuration;
-using App.Metrics.DependencyInjection.Internal;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Middleware;
-using App.Metrics.Internal;
-using App.Metrics.Serialization.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Owin;
 
 // ReSharper disable CheckNamespace
-
 namespace App.Metrics
-// ReSharper restore CheckNamespace
+    // ReSharper restore CheckNamespace
 {
     public static class OwinMetricsAppBuilderExtensions
     {
@@ -46,7 +41,7 @@ namespace App.Metrics
             var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
             var metrics = provider.GetRequiredService<IMetrics>();
 
-            app.Use(new PingEndpointMiddleware(owinMetricsOptions,loggerFactory, metrics));
+            app.Use(new PingEndpointMiddleware(owinMetricsOptions, loggerFactory, metrics));
 
             if (owinMetricsOptions.HealthEndpointEnabled)
             {
@@ -57,7 +52,11 @@ namespace App.Metrics
 
             if (owinMetricsOptions.MetricsTextEndpointEnabled && appMetricsOptions.MetricsEnabled)
             {
-                app.Use(new MetricsEndpointTextEndpointMiddleware(owinMetricsOptions, loggerFactory, metrics));
+                app.Use(new MetricsEndpointTextEndpointMiddleware(
+                    appMetricsOptions, 
+                    owinMetricsOptions, 
+                    loggerFactory, 
+                    metrics));
             }
 
             if (owinMetricsOptions.MetricsEndpointEnabled && appMetricsOptions.MetricsEnabled)

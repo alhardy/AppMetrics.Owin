@@ -13,7 +13,7 @@ namespace App.Metrics.Extensions.Owin.Middleware
 {
     public class PerRequestTimerMiddleware : AppMetricsMiddleware<OwinMetricsOptions>
     {
-        private const string TimerItemsKey = "__Mertics.PerRequestStartTime__";
+        private const string TimerItemsKey = "__App.Metrics.PerRequestStartTime__";
 
         public PerRequestTimerMiddleware(OwinMetricsOptions owinOptions,
             ILoggerFactory loggerFactory,

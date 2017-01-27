@@ -34,7 +34,7 @@ namespace System.Web
                 var controllerName = RequestContext.RouteData.Values["controller"] as string;
                 var actionName = RequestContext.RouteData.Values["action"] as string;
 
-                context.GetOwinContext().Environment.Add("__Mertics.CurrentRouteName__",
+                context.GetOwinContext().Environment.Add("__App.Metrics.CurrentRouteName__",
                     $"{controllerName?.ToLowerInvariant()}/{actionName?.ToLowerInvariant()}");
 
                 controllerInstance?.Execute(RequestContext);

@@ -1,17 +1,15 @@
-// Copyright (c) Allan hardy. All rights reserved.
+// Copyright (c) Allan Hardy. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
 
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using App.Metrics.Core;
+using App.Metrics.Abstractions.Serialization;
 using App.Metrics.Extensions.Owin.DependencyInjection.Options;
 using App.Metrics.Extensions.Owin.Extensions;
-using App.Metrics.Internal;
-using App.Metrics.Serialization.Interfaces;
+using App.Metrics.Health;
 using Microsoft.Extensions.Logging;
 
 namespace App.Metrics.Extensions.Owin.Middleware
@@ -20,7 +18,8 @@ namespace App.Metrics.Extensions.Owin.Middleware
     {
         private readonly IHealthStatusSerializer _serializer;
 
-        public HealthCheckEndpointMiddleware(OwinMetricsOptions owinOptions,
+        public HealthCheckEndpointMiddleware(
+            OwinMetricsOptions owinOptions,
             ILoggerFactory loggerFactory,
             IMetrics metrics,
             IHealthStatusSerializer serializer)
