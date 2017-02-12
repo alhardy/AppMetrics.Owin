@@ -1,6 +1,6 @@
 # AppMetrics.Owin
 
-[![Official Site](https://img.shields.io/badge/site-appmetrics-blue.svg)](https://alhardy.github.io/app-metrics-docs/getting-started/intro.html) [![Build status](https://ci.appveyor.com/api/projects/status/fulrp1f16fj7eudb?svg=true)](https://ci.appveyor.com/project/alhardy/appmetrics/branch/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Official Site](https://img.shields.io/badge/site-appmetrics-blue.svg)](https://alhardy.github.io/app-metrics-docs/getting-started/intro.html) [![Build status](https://ci.appveyor.com/api/projects/status/fulrp1f16fj7eudb?svg=true)](https://ci.appveyor.com/project/alhardy/appmetrics-owin/branch/master) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 |Package|Pre Release|Latest Release|
 |------|:--------:|:--------:|
