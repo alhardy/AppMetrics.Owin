@@ -4,6 +4,7 @@
 using App.Metrics.Extensions.Owin.Extensions;
 using App.Metrics.Extensions.Owin.Internal;
 using App.Metrics.Gauge;
+using App.Metrics.Tagging;
 
 // ReSharper disable CheckNamespace
 namespace App.Metrics
@@ -41,7 +42,7 @@ namespace App.Metrics
         {
             metrics.Measure.Meter.Mark(
                 OwinMetricsRegistry.Contexts.OAuth2.Meters.EndpointHttpRequests(routeTemplate),
-                item => item.With("client_id", clientId).With("http_status_code", httpStatusCode.ToString()));
+                new MetricSetItem("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
         }
@@ -50,7 +51,7 @@ namespace App.Metrics
         {
             metrics.Measure.Meter.Mark(
                 OwinMetricsRegistry.Contexts.HttpRequests.Meters.EndpointHttpErrorRequests(routeTemplate),
-                item => item.With("http_status_code", httpStatusCode.ToString()));
+                new MetricSetItem("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
         }
@@ -59,7 +60,7 @@ namespace App.Metrics
         {
             metrics.Measure.Meter.Mark(
                 OwinMetricsRegistry.Contexts.HttpRequests.Meters.HttpErrorRequests,
-                item => item.With("http_status_code", httpStatusCode.ToString()));
+                new MetricSetItem("http_status_code", httpStatusCode.ToString()));
 
             return metrics;
         }
@@ -68,7 +69,7 @@ namespace App.Metrics
         {
             metrics.Measure.Meter.Mark(
                 OwinMetricsRegistry.Contexts.OAuth2.Meters.HttpRequests,
-                item => item.With("client_id", clientId).With("http_status_code", httpStatusCode.ToString()));
+                new MetricSetItem(new[] { "client_id", "http_status_code" }, new[] { clientId, httpStatusCode.ToString() }));
 
             return metrics;
         }
