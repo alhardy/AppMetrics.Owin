@@ -9,8 +9,8 @@
     "debugType": "full"
   },
   "dependencies": {
-    "App.Metrics": "1.0.0-rc1",
-    "App.Metrics.Extensions.Owin": "1.0.0-rc1",
+    "App.Metrics": "1.0.0-*",
+    "App.Metrics.Extensions.Owin": "1.0.0-*",
     "Microsoft.AspNet.Mvc": "5.2.3",
     "Microsoft.Extensions.DependencyInjection": "1.1.0",
     "Microsoft.Extensions.Logging": "1.1.0",
@@ -59,6 +59,6 @@
     "licenseUrl": "https://github.com/alhardy/AppMetrics.Owin/blob/master/LICENSE",
     "iconUrl": "https://alhardy.github.io/app-metrics-docs/logo.png"
   },
-  "version": "1.0.0-rc1"
+  "version": "1.0.0"
 
 }
